@@ -13,10 +13,9 @@ public class isPalindrome {
     }
 
     public String solution(String word){
-        word = word.toLowerCase();
         boolean isPalindrome = false;
         String reversed = new StringBuilder(word).reverse().toString();
-        if(word.equals(reversed)) isPalindrome = true;
+        if(word.equalsIgnoreCase(reversed)) isPalindrome = true;
         return (isPalindrome)?"YES":"NO";
     }
 

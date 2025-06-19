@@ -15,10 +15,12 @@ public class DuplicateCharRemover {
         System.out.println(removedWord);
     }
 
+
     public String solution(String word){
         StringBuilder sb = new StringBuilder();
         char[] chars = word.toCharArray();
         for(char c: chars){
+            // indexOf 는 처음 발견된 index를 반환 한다
             if(sb.toString().indexOf(c) == -1){
                 sb.append(c);
             }
