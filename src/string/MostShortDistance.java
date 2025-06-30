@@ -12,15 +12,12 @@ public class MostShortDistance {
         String s = line[0];
         String t = line[1];
         MostShortDistance mostShortDistance = new MostShortDistance();
-        String answer = mostShortDistance.solution(s, t);
+        String answer = mostShortDistance.solution2(s, t);
         System.out.println(answer.trim());
     }
 
     /**
-     *
-     * @param s
-     * @param t
-     * @return
+     * 내 풀이
      */
     public String solution(String s, String t){
         int[] result = new int[s.length()];
@@ -48,8 +45,45 @@ public class MostShortDistance {
 
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < result.length; i++) {
-            sb.append(result[i] + " ");
+        for (int j : result) {
+            sb.append(j).append(" ");
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 강의 풀이
+     */
+    public String solution2(String s, String t){
+        int loopSize = s.length();
+        int baseDistance = 1000;
+        int [] resultArr = new int[loopSize];
+        for (int i = 0; i < loopSize; i++) {
+            if(s.charAt(i) == t.charAt(0)){
+                baseDistance = 0;
+                resultArr[i] = baseDistance;
+            }else{
+                baseDistance++;
+                resultArr[i] = baseDistance;
+            }
+        }
+
+        for (int i = loopSize-1; i >= 0; i--) {
+            if(s.charAt(i) == t.charAt(0)){
+                baseDistance = 0;
+                resultArr[i] = baseDistance;
+            }else{
+                baseDistance++;
+                resultArr[i] = Math.min(resultArr[i], baseDistance);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < loopSize; i++) {
+            if(i != loopSize-1){
+                sb.append(resultArr[i]).append(" ");
+            }else{
+                sb.append(resultArr[i]);
+            }
         }
         return sb.toString();
     }
