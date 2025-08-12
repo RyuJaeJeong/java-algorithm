@@ -13,7 +13,7 @@ public class ReversePrime {
         while(st.hasMoreElements()){
             StringBuilder sb = new StringBuilder(st.nextToken());
             int reversedNum = Integer.parseInt(sb.reverse().toString());
-            if(obj.isPrime(reversedNum)) System.out.printf("%d ", reversedNum);
+            if(obj.isPrime2(reversedNum)) System.out.printf("%d ", reversedNum);
         }
         System.out.println();
     }
@@ -31,6 +31,14 @@ public class ReversePrime {
             }
         }
         return (temp[num] == 0)?true:false;
+    }
+
+    public boolean isPrime2(int num){
+        if(num == 1) return false;
+        for (int i = 2; i < num; i++) {
+            if(num%i==0) return false;
+        }
+        return true;
     }
 
 }
