@@ -15,20 +15,20 @@ public class GridMaximumNum {
             }
         }
         GridMaximumNum gridMaximumNum = new GridMaximumNum();
-        int answer = gridMaximumNum.solution(len, arr);
+        int answer = gridMaximumNum.solution2(len, arr);
         System.out.println(answer);
     }
 
     public int solution(int len, int[][] arr){
-        int answer = 0;
+        int answer = Integer.MIN_VALUE;
         
-        // 가로 합
+        // 행의 합
         for (int i = 0; i < len; i++) {
             int sum = getSum(arr[i]);
             if(sum > answer) answer = sum;
         }
         
-        // 새로 합
+        // 열의 합
         for (int i = 0; i < len; i++) {
             int [] temp = new int[len];
             for (int j = 0; j < len; j++) {
@@ -64,4 +64,28 @@ public class GridMaximumNum {
     public static int getSum(int[] arr){
         return Arrays.stream(arr).sum();
     }
+
+    public int solution2(int len, int[][] arr){
+        int answer = Integer.MIN_VALUE;
+        // sum1 은 행의 합, sum2 는 열의 합
+        int sum1, sum2;
+        for (int i = 0; i < len; i++) {
+            sum1=sum2=0;
+            for (int j = 0; j < len; j++) {
+                sum1+=arr[i][j];
+                sum2+=arr[j][i];
+            }
+            answer=Math.max(answer, sum1);
+            answer=Math.max(answer, sum2);
+        }
+        sum1=sum2=0;
+        for (int i = 0; i < len; i++) {
+            sum1+=arr[i][i];
+            sum2+=arr[i][len-1-i];
+        }
+        answer=Math.max(answer, sum1);
+        answer=Math.max(answer, sum2);
+        return answer;
+    }
+
 }
