@@ -13,7 +13,7 @@ public class TemporaryKing {
             }
         }
         TemporaryKing temporaryKing = new TemporaryKing();
-        System.out.println(temporaryKing.solution(len, arr));
+        System.out.println(temporaryKing.solution2(len, arr));
     }
 
     public int solution(int len, int[][] arr){
@@ -41,5 +41,26 @@ public class TemporaryKing {
             }
         }
         return maxIndex+1;
+    }
+
+    public int solution2(int len, int[][] arr){
+        int answer = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < len; i++) {
+            int cnt = 0;
+            for (int j = 0; j < len; j++) {
+                for (int k = 0; k < 5; k++) {
+                    if(arr[i][k] == arr[j][k]){
+                        cnt++;
+                        break;
+                    }
+                }
+            }
+            if(cnt > max){
+                answer = i;
+                max = cnt;
+            }
+        }
+        return answer+1;
     }
 }
