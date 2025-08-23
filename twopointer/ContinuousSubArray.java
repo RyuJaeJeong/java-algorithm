@@ -34,7 +34,7 @@ public class ContinuousSubArray {
         int sum = 0;
         while(lt < N-1){
             if(rt == lt + 1){
-                sum = Arrays.stream(Arrays.copyOfRange(arr, lt, rt+1)).sum();
+                sum = arr[lt] + arr[rt];
             }else{
                 sum = sum + arr[rt];
             }
@@ -62,13 +62,16 @@ public class ContinuousSubArray {
         return answer;
     }
 
-    public static int sum(int [] arr){
-        int answer = 0;
-        for (int i = 0; i < arr.length; i++) {
-            answer += arr[i];
+    public int solution2(int N, int M, int[] arr){
+        int answer = 0, sum = 0, lt=0;
+        for (int rt = 0; rt < N; rt++) {
+            sum += arr[rt];
+            if(sum == M) answer++;
+            while(sum >= M){
+                sum -=arr[lt++];
+                if(sum==M) answer++;
+            }
         }
         return answer;
     }
-
-
 }
