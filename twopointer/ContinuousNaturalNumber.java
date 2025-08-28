@@ -1,6 +1,5 @@
 package twopointer;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -10,7 +9,7 @@ public class ContinuousNaturalNumber {
         Scanner scanner = new Scanner(System.in);
         int targetNumber = scanner.nextInt();
         ContinuousNaturalNumber obj = new ContinuousNaturalNumber();
-        System.out.println(obj.getCount2(targetNumber));
+        System.out.println(obj.getCount3(targetNumber));
     }
 
     /**
@@ -70,6 +69,31 @@ public class ContinuousNaturalNumber {
                 lt++;
                 rt = lt+1;
             }
+        }
+        return answer;
+    }
+
+    /**
+     * 예를들어 연속된 자연수의 합이 15
+     * 15 >> □  □
+     *       1  2
+     * 15 - 1 - 2 = 12
+     * 12 / 2 = 6
+     * 15 >> (1 + 6) + (2 + 6)
+     * 두 수를 할당하고, 두수의 합을 목표 숫자에서 빼서 그 숫자가 2로 나누어떨어져야함
+     * 같은 방식으로 세개면?
+     * 네개면
+     * @param targetNumber 목표 숫자
+     * @return 달성 갯수
+     */
+    public int getCount3(int targetNumber){
+        int answer = 0;
+        int cnt = 1; // 네모 상자에 할당 할 연속된 수 역할
+        targetNumber -= cnt;
+        while(targetNumber > 0){
+            cnt++;
+            targetNumber -= cnt;
+            if(targetNumber % cnt == 0) answer++;
         }
         return answer;
     }
