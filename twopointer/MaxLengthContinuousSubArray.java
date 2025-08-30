@@ -18,7 +18,7 @@ public class MaxLengthContinuousSubArray {
             arr[idx++] = Integer.parseInt(tokenizer.nextToken());
         }
         MaxLengthContinuousSubArray continuousSubArray = new MaxLengthContinuousSubArray();
-        System.out.println(continuousSubArray.solution(N, M, arr));
+        System.out.println(continuousSubArray.solution2(N, M, arr));
     }
 
     /**
@@ -52,6 +52,19 @@ public class MaxLengthContinuousSubArray {
                 answer = temp.size();
             }
             temp = new ArrayList<Integer>();
+        }
+        return answer;
+    }
+
+    public int solution2(int N, int M, int[] arr){
+        int lt = 0, answer=0, cnt=0;
+        for (int rt = 0; rt < N; rt++) {
+            if(arr[rt] == 0) cnt++;
+            while(cnt > M){
+                if(arr[lt] == 0) cnt--;
+                lt++;
+            }
+            answer = Math.max(answer, rt - lt + 1);
         }
         return answer;
     }
