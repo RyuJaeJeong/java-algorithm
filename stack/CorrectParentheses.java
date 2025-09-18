@@ -12,6 +12,13 @@ public class CorrectParentheses {
         System.out.println(isCorrect?"YES":"NO");
     }
 
+    /**
+     * 올바른 괄호조합인지 판별
+     * (())() >> true
+     * (()())) >> false
+     * @param str 괄호 조합 문자열
+     * @return 올바른지 여부
+     */
     public boolean solution(String str){
         Stack<Character> stack = new Stack();
         boolean result = true;
