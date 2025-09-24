@@ -44,4 +44,21 @@ public class PostFix {
         }
         return stack.pop();
     }
+
+    public int cal2(String expression){
+        Stack<Integer> stack = new Stack<>();
+        for(char ch: expression.toCharArray()){
+            if(Character.isDigit(ch)) stack.push(ch - 48);
+            else{
+                int rt = stack.pop();
+                int lt = stack.pop();
+                if(ch == '+') stack.push(lt+rt);
+                else if(ch == '-') stack.push(lt-rt);
+                else if(ch == '*') stack.push(lt*rt);
+                else if(ch == '/') stack.push(lt/rt);
+            }
+
+        }
+        return stack.pop();
+    }
 }
