@@ -22,7 +22,7 @@ public class SelectionSort {
      * @param arr 정렬할 배열
      */
     public void sort(int[] arr){
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length-1; i++) {
             int min = i;
             for (int j = i+1; j < arr.length; j++)
                 if(arr[j] < arr[min]) min = j;
@@ -30,6 +30,12 @@ public class SelectionSort {
         }
     }
 
+    /**
+     *idx1과 idx2의 인자를 교환
+     * @param arr 교환 대상 배열
+     * @param idx1 교환 대상 인덱스1
+     * @param idx2 교환 대상 인덱스2
+     */
     public void swap(int[] arr, int idx1, int idx2){
         int temp = arr[idx1];
         arr[idx1] = arr[idx2];
