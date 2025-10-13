@@ -11,7 +11,7 @@ public class InsertionSort {
             arr[i] = sc.nextInt();
         }
         InsertionSort insertionSort = new InsertionSort();
-        insertionSort.sort(arr);
+        insertionSort.sort2(arr);
         for (int i = 0; i < length; i++) {
             if(i == length - 1) System.out.print(arr[i]);
             else System.out.print(arr[i] + " ");
@@ -30,4 +30,20 @@ public class InsertionSort {
             arr[j] = num;
         }
     }
+
+    public void sort2(int[] arr){
+        int length = arr.length;
+        for (int i = 1; i < length; i++) {
+            int num = arr[i];
+            int j = i-1;
+            for (; j >= 0; j--) {
+                if(arr[j] > num) arr[j+1] = arr[j];
+                else break;
+            }
+
+            arr[j+1] = num;
+        }
+    }
+
+
 }
