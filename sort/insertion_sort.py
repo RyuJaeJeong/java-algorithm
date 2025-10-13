@@ -13,5 +13,5 @@ if __name__=="__main__":
     length = int(input())
     arr = input().split()
     arr = list(map(lambda x: int(x), arr))
-    sort2(arr)
+    sort(arr)
     print(arr)
